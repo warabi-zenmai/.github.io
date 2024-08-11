@@ -136,7 +136,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('data-form').reset(); // フォームをリセット
             
             // ページ遷移を確実に行う
-            window.location.href = 'thankyou.html';
+            window.location.href = '// サンクスページにリダイレクト
+window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent-successfully.html';
+';
         })
         .catch(error => {
             console.error('Error:', error);  // デバッグログ
