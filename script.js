@@ -116,31 +116,21 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Sending data:', data);  // デバッグログ
 
         // データ送信処理
-        fetch('https://script.google.com/macros/s/AKfycbwGgTf9afVZUo6jFomf55zuK4oqvnLHWOMteWukmQ1IazdYhB2oPDW0F4LDt4wxJib-/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyd7clTs8Nnj8PVdZslFeICFgLejPrIazjZ4Ismpdyy3zZycHbeAdDI399d7yHoBGeP/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            mode: 'no-cors'  // CORSを回避する設定
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.text();
-        })
-        .then(data => {
-            console.log('Response:', data);  // デバッグログ
-            alert('データが保存されました');
-            localStorage.clear(); // ローカルストレージをクリア
-            document.getElementById('data-form').reset(); // フォームをリセット
-            
-            // ページ遷移を確実に行う
-            window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent_successfully.html';
+            // no-corsではレスポンスの中身が取得できないので、通常の成功メッセージのログなどを行う
+            console.log('データが送信されました');
         })
         .catch(error => {
-            console.error('Error:', error);  // デバッグログ
-            alert('データの保存に失敗しました');
+            console.error('Error:', error);  // エラーログ
+            alert('データの送信に失敗しました');
         });
     });
 });
