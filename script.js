@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedCategory = document.querySelector('.btn-category.selected').textContent;
         const selectedStore = document.querySelector('.btn-store.selected').textContent;
         const selectedSize = document.querySelector('.btn-size.selected').textContent;
-        const selectedPhoto = document.querySelector('.photo-slot.selected').getAttribute('data-text');
+        const selectedPhoto = document.querySelector('.photo-slot.selected img').alt; // 画像のalt属性からテキストを取得
 
         localStorage.setItem('selectedCategory', selectedCategory);
         localStorage.setItem('selectedStore', selectedStore);
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: document.querySelector('#auto-date').value || document.querySelector('#manual-date').value,
             category: selectedCategory,
             store: selectedStore,
-            photo: selectedPhoto,  // 修正部分：テキストを保存
+            photo: selectedPhoto,  // 画像のalt属性から取得したテキストを送信
             size: selectedSize,
             quantity: document.querySelector('#quantity-select').value || document.querySelector('#quantity-input').value,
             remarks: document.querySelector('#remarks').value
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Sending data:', data);  // デバッグログ
 
         // データ送信処理
-        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyd7clTs8Nnj8PVdZslFeICFgLejPrIazjZ4Ismpdyy3zZycHbeAdDI399d7yHoBGeP/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('data-form').reset(); // フォームをリセット
             
             // ページ遷移を確実に行う
-            window.location.href = 'https://your-thank-you-page-url';
+            window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent_successfully.html';
         })
         .catch(error => {
             console.error('Error:', error);  // デバッグログ
