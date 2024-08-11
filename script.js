@@ -134,8 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('データが保存されました');
             localStorage.clear(); // ローカルストレージをクリア
             document.getElementById('data-form').reset(); // フォームをリセット
-        // サンクスページにリダイレクト
-        window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent-successfully.html';
+            
+            // ページ遷移を確実に行う
+            window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent-successfully.html';
         })
         .catch(error => {
             console.error('Error:', error);  // デバッグログ
