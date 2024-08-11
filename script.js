@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // ページ遷移を確実に行う
             window.location.href = '// サンクスページにリダイレクト
-window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent-successfully.html';
+window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent successfully.html';
 ';
         })
         .catch(error => {
