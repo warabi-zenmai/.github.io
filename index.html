@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォーム</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>管理システム Ver.1.0</h1>
+        <form id="data-form">
+            <!-- 日付部分 -->
+            <div class="date-container">
+                <div class="date-wrapper">
+                    <label for="auto-date">日付（自動取得）</label>
+                    <input type="text" id="auto-date" name="auto-date" readonly>
+                </div>
+                <div class="date-wrapper">
+                    <label for="manual-date">日付（手入力）</label>
+                    <input type="date" id="manual-date" name="manual-date">
+                </div>
+                <div class="date-wrapper">
+                    <label for="manual-time">時間（手入力）</label>
+                    <input type="time" id="manual-time" name="manual-time">
+                </div>
+            </div>
+
+            <!-- カテゴリ -->
+            <label for="category">カテゴリ</label>
+            <div class="button-group category">
+                <button type="button" class="btn-category" id="category-production" name="category" data-category="生産">生産</button>
+                <button type="button" class="btn-category" id="category-bottling" name="category" data-category="瓶詰">瓶詰</button>
+                <button type="button" class="btn-category" id="category-shipping" name="category" data-category="出荷">預託</button>
+                <button type="button" class="btn-category" id="category-sales" name="category" data-category="販売">販売</button>
+            </div>
+
+            <!-- 出荷店舗 -->
+            <label for="store">出荷店舗</label>
+            <div class="button-group store">
+                <button type="button" class="btn-store" id="store-marche" name="store" data-store="マルシェ">マルシェ</button>
+                <button type="button" class="btn-store" id="store-aisai" name="store" data-store="愛菜館">愛菜館</button>
+                <div class="btn-store" style="visibility: hidden;"></div> <!-- ここに「なし」の部分を空欄として飛ばす -->
+                <button type="button" class="btn-store" id="store-yamasan" name="store" data-store="ヤマサン">ヤマサン</button>
+                <button type="button" class="btn-store" id="store-hara-hanie" name="store" data-store="原信 (埴生)">原信 (埴生)</button>
+                <button type="button" class="btn-store" id="store-hara-ueda" name="store" data-store="原信 (上田)">原信 (上田)</button>
+                <button type="button" class="btn-store" id="store-ami" name="store" data-store="AMI さん">AMI さん</button>
+                <button type="button" class="btn-store" id="store-seven-a" name="store" data-store="セブン A">セブン A</button>
+                <button type="button" class="btn-store" id="store-seven-b" name="store" data-store="セブン B">セブン B</button>
+                <button type="button" class="btn-store" id="store-seven-c" name="store" data-store="セブン C">セブン C</button>
+                <button type="button" class="btn-store" id="store-seven-d" name="store" data-store="セブン D">セブン D</button>
+                <button type="button" class="btn-store" id="store-seven-e" name="store" data-store="セブン E">セブン E</button>
+            </div>
+
+            <!-- 写真 -->
+            <label for="photo">写真</label>
+            <div class="photo-container">
+                <div class="photo-slot" id="slot1" name="photo"><img src="https://lh3.googleusercontent.com/d/15Kc9YjhXQqFb4Lo07s5ouVtAL6D3oHqf" alt="春（百花）"></div>
+                <div class="photo-slot" id="slot2" name="photo"><img src="https://lh3.googleusercontent.com/d/1B-VsTh23NqVtLORKRVXQaR7i7ZFfkGbK" alt="初夏（百花）"></div>
+                <div class="photo-slot" id="slot3" name="photo"><img src="https://lh3.googleusercontent.com/d/1X-1jWr7duQVQWYOVM52zYq04DY8xUN0U" alt="秋（百花）"></div>
+                <div class="photo-slot" id="slot4" name="photo"><img src="https://lh3.googleusercontent.com/d/1U0XOV_bgBJcGdF4EwqcfU2HMcHsA2XWW" alt="アカシヤ"></div>
+                <div class="photo-slot" id="slot5" name="photo"><img src="https://lh3.googleusercontent.com/d/1aZxTEdNRzXOZDX5r0qAdz4GAfFyYWG9c" alt="柿"></div>
+                <div class="photo-slot" id="slot6" name="photo"><img src="https://lh3.googleusercontent.com/d/1zJBVs8tyt54ofhEvjRoCM2DAblXnWBKz" alt="栗"></div>
+                <div class="photo-slot" id="slot7" name="photo"><img src="https://lh3.googleusercontent.com/d/1yygHhOKbS7Ye_Ruv36AMi539THE4wHe8" alt="クローバー"></div>
+                <div class="photo-slot" id="slot8" name="photo"><img src="https://lh3.googleusercontent.com/d/1TqeuyZ0-zQN6PzS2PlX-STiXhgJDWXGN" alt="たんぽぽ"></div>
+                <div class="photo-slot" id="slot9" name="photo"><img src="https://lh3.googleusercontent.com/d/1WpQq5cp3rS6rXnaizJMq1-17Fca3397C" alt="藤"></div>
+                <div class="photo-slot" id="slot10" name="photo"><img src="https://lh3.googleusercontent.com/d/1rJY0hyUs54EcAp3sqsshOhgGOELyFKh7" alt="ミント"></div>
+                <div class="photo-slot" id="slot11" name="photo"><img src="https://lh3.googleusercontent.com/d/1O6HX4e4IdUHob2eZg_Dg5LV_60SgSaaj" alt="クリーミー"></div>
+                <div class="photo-slot" id="slot12" name="photo"><img src="https://lh3.googleusercontent.com/d/1gDicYTn4j_YpSaUHhePOkNyCgZiuCoyA" alt="ひまわり"></div>
+            </div>
+
+            <!-- サイズ -->
+            <label for="size">サイズ</label>
+            <div class="button-group size">
+                <button type="button" class="btn-size" id="size-50" name="size" data-size="50g">50g</button>
+                <button type="button" class="btn-size" id="size-100" name="size" data-size="100g">100g</button>
+                <button type="button" class="btn-size" id="size-170" name="size" data-size="170g">170g</button>
+                <button type="button" class="btn-size" id="size-300" name="size" data-size="300g">300g</button>
+                <button type="button" class="btn-size" id="size-600" name="size" data-size="600g">600g</button>
+                <button type="button" class="btn-size" id="size-1000" name="size" data-size="1000g">1000g</button>
+            </div>
+
+            <!-- 数量 -->
+            <div class="quantity-container">
+                <div class="quantity-wrapper">
+                    <label for="quantity-select">数量（個）</label>
+                    <select id="quantity-select" name="quantity" class="quantity-select">
+                        <!-- 1から30までのオプションを追加 -->
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                    </select>
+                </div>
+                <div class="quantity-wrapper">
+                    <label for="quantity-input">30以上の場合</label>
+                    <input type="text" id="quantity-input" name="quantity" class="quantity-input" placeholder="直接手入力">
+                </div>
+            </div>
+
+            <!-- 備考 -->
+            <label for="remarks">備考</label>
+            <textarea id="remarks" name="remarks"></textarea>
+
+            <!-- 登録ボタン -->
+            <button type="submit" class="submit-button">この内容で登録する</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
