@@ -15,20 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const manualDateInput = document.getElementById('manual-date');
     const manualTimeInput = document.getElementById('manual-time');
 
-    // カレンダーから日付が選択された後に自動取得日付をクリアする
     manualDateInput.addEventListener('change', function() {
         if (manualDateInput.value) {
-            autoDateInput.value = ''; // 自動取得日付をクリア
-            manualTimeInput.disabled = false; // 手動入力時間を有効にする
+            autoDateInput.value = ''; 
+            manualTimeInput.disabled = false;
         }
     });
 
-    // 手動入力日付が未入力の場合、手動入力時間を無効にする
     manualTimeInput.addEventListener('focus', function() {
         if (!manualDateInput.value) {
-            manualTimeInput.disabled = true; // 手動入力日付が未入力の場合、手動入力時間を無効にする
+            manualTimeInput.disabled = true;
         } else {
-            manualTimeInput.disabled = false; // 手動入力日付が入力されている場合、手動入力時間を有効にする
+            manualTimeInput.disabled = false;
         }
     });
 
@@ -54,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     quantityInput.addEventListener('input', function() {
-        // 全角数字を半角に変換
         const halfWidthValue = this.value.replace(/[０-９]/g, function(s) {
             return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
         });
@@ -64,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // カテゴリと出荷店舗の選択状態を保持する
     const categoryButtons = document.querySelectorAll('.btn-category');
     const storeButtons = document.querySelectorAll('.btn-store');
-    const sizeButtons = document.querySelectorAll('.btn-size'); // サイズ選択ボタン
+    const sizeButtons = document.querySelectorAll('.btn-size');
 
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -92,10 +89,20 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault(); // フォームのデフォルト送信を防ぐ
 
         // 選択された項目をlocalStorageに保存
-        const selectedCategory = document.querySelector('.btn-category.selected').textContent;
-        const selectedStore = document.querySelector('.btn-store.selected').textContent;
-        const selectedSize = document.querySelector('.btn-size.selected').textContent;
-        const selectedPhoto = document.querySelector('.photo-slot.selected img').alt;
+        const selectedCategoryElement = document.querySelector('.btn-category.selected');
+        const selectedStoreElement = document.querySelector('.btn-store.selected');
+        const selectedSizeElement = document.querySelector('.btn-size.selected');
+        const selectedPhotoElement = document.querySelector('.photo-slot.selected img');
+
+        if (!selectedCategoryElement || !selectedStoreElement || !selectedSizeElement || !selectedPhotoElement) {
+            alert('すべての項目を選択してください');
+            return;
+        }
+
+        const selectedCategory = selectedCategoryElement.textContent;
+        const selectedStore = selectedStoreElement.textContent;
+        const selectedSize = selectedSizeElement.textContent;
+        const selectedPhoto = selectedPhotoElement.alt;
 
         localStorage.setItem('selectedCategory', selectedCategory);
         localStorage.setItem('selectedStore', selectedStore);
@@ -116,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Sending data:', data);  // デバッグログ
 
         // データ送信処理
-        fetch('https://script.google.com/macros/s/AKfycbyd7clTs8Nnj8PVdZslFeICFgLejPrIazjZ4Ismpdyy3zZycHbeAdDI399d7yHoBGeP/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxWGKS92KVUGKsx_8rrADF77PgCmPU-ibOxIzaujJ_MGSJsVAPW4EPDMB4-0tgymXhJ/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -135,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.clear(); // ローカルストレージをクリア
             document.getElementById('data-form').reset(); // フォームをリセット
             
-            // サンクスページへのリダイレクト
-            window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent-successfully.html';
+            // 成功時にサンクスページにリダイレクト
+            window.location.href = '/sent-successfully.html';
         })
         .catch(error => {
             console.error('Error:', error);  // デバッグログ
