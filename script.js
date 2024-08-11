@@ -123,12 +123,13 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Sending data:', data);  // デバッグログ
 
         // データ送信処理
-        fetch('https://script.google.com/macros/s/AKfycbxWGKS92KVUGKsx_8rrADF77PgCmPU-ibOxIzaujJ_MGSJsVAPW4EPDMB4-0tgymXhJ/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxr9H5QBcMpFIXjBg9fOu3DedjBhJPL7EjOFQ6zhI-cEfV6RLlGv3wXToAp7fDEO0ct/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
             }
+            mode: 'cors'
         })
         .then(response => {
             if (!response.ok) {
