@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Sending data:', data);  // デバッグログ
 
         // データ送信処理
-        fetch('https://script.google.com/macros/s/AKfycbyYo-IvOmNM2AbNs9BcR2JPKz2zMXor1JijvqS_0Y4OWOi7Wl4GBLOvsOkykUCqeMLC/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyd7clTs8Nnj8PVdZslFeICFgLejPrIazjZ4Ismpdyy3zZycHbeAdDI399d7yHoBGeP/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.clear(); // ローカルストレージをクリア
             document.getElementById('data-form').reset(); // フォームをリセット
             
-            // ページ遷移を確実に行う
+            // サンクスページへのリダイレクト
             window.location.href = 'https://warabi-zenmai.github.io/hanasakabba/sent-successfully.html';
         })
         .catch(error => {
