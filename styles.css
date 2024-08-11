@@ -1,0 +1,362 @@
+/* グローバルスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF8CD; /* 背景色を設定 */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* body全体の高さを設定 */
+    overflow: hidden; /* body全体のスクロールを無効に */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* コンテナスタイル */
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFF8CD !important; /* 背景色を強制的に適用 */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 40px); /* コンテナの高さを調整 */
+    overflow-y: auto; /* コンテナ内でスクロールを有効に */
+}
+
+/* 見出しスタイル */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+/* フォームスタイル */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ラベルスタイル */
+label {
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+/* 入力要素スタイル */
+input, select, textarea, button {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* ボタンスタイル */
+button {
+    background-color: #A3D2CA;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FF9642;
+}
+
+/* 写真コンテナスタイル */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px; /* 子要素間のギャップを設定 */
+}
+
+/* 写真スロットスタイル */
+.photo-slot {
+    width: calc(33.33% - 10px); /* 12スロットを3列に配置 */
+    height: 100px;
+    background-color: #e9e9e9;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px; /* 上下のマージンを追加 */
+}
+
+.photo-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像をスロット全体に合わせる */
+    border-radius: 5px; /* スロットの角丸に合わせる */
+}
+
+.photo-slot.selected {
+    border: 3px solid #FF5F00; /* 選択時の強調枠の色と太さを調整 */
+}
+
+/* ボタングループスタイル */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.button-group.category, .button-group.size {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.button-group.store, .button-group.size {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* 各ボタンのスタイル */
+.btn-category, .btn-size {
+    height: 50px; /* 高さを調整 */
+    padding: 0 20px;
+    position: relative;
+    text-decoration: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+    background-color: #FFE05D; /* デフォルトの色 */
+    transition: all 0.3s ease, background-color 0.3s;
+    overflow: hidden;
+    background-size: 400%;
+    font-size: calc(12px + 0.5vw); /* Responsive font size */
+    color: #646464; /* テキストの色 */
+    font-weight: bold; /* テキストを太字に */
+}
+
+/* ボタンのホバースタイル */
+.btn-category:hover, .btn-size:hover {
+    background-color: #FF9642; /* ホバー後の色 */
+}
+
+.btn-category.selected, .btn-size.selected {
+    background-color: #FF9642; /* 選択時の背景色 */
+    color: #646464; /* 選択時のテキストの色 */
+}
+
+/* 出荷店舗のボタンスタイル */
+.btn-store {
+    height: 50px; /* 高さを調整 */
+    padding: 0 20px;
+    position: relative;
+    text-decoration: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+    background-color: #8CBEAA; /* デフォルトの色 */
+    transition: all 0.3s ease, background-color 0.3s;
+    overflow: hidden;
+    background-size: 400%;
+    font-size: calc(12px + 0.5vw); /* Responsive font size */
+    color: #646464; /* テキストの色 */
+    font-weight: bold; /* テキストを太字に */
+}
+
+/* 出荷店舗のボタンホバースタイル */
+.btn-store:hover {
+    background-color: #18B0B0; /* ホバー後の色 */
+}
+
+.btn-store.selected {
+    background-color: #18B0B0; /* 選択時の背景色 */
+    color: #646464; /* 選択時のテキストの色 */
+}
+
+/* ボタンのホバースタイル */
+.btn-category::before, .btn-size::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    z-index: 2;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 110%;
+    height: inherit;
+    border-radius: inherit;
+    background-color: #FF9642; /* ホバー後の色 */
+    transition: all 0.3s ease;
+}
+
+.btn-store::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    z-index: 2;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 110%;
+    height: inherit;
+    border-radius: inherit;
+    background-color: #18B0B0; /* ホバー後の色 */
+    transition: all 0.3s ease;
+}
+
+.btn-category:after, .btn-size:after, .btn-store:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 4px);
+    right: 20px;
+    z-index: 3;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #FFF8CD; /* 小さい丸の色 */
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* ボタンのテキストスタイル */
+.btn-category .text, .btn-store .text, .btn-size .text {
+    position: relative;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+/* ボタンのホバースタイル */
+.btn-category:hover:before, .btn-store:hover:before, .btn-size:hover:before {
+    transform: scaleX(1);
+}
+
+.btn-category:hover .text, .btn-store:hover .text, .btn-size:hover .text {
+    color: #646464; /* ホバー後のテキストの色 */
+}
+
+.btn-category:hover:after, .btn-store:hover:after, .btn-size:hover:after {
+    background-color: #646464;
+    transform-origin: center;
+    transform: scale(2);
+}
+
+.btn-category.selected:before, .btn-size.selected:before, .btn-store.selected:before {
+    background-color: transparent;
+}
+
+/* 数量のスタイル調整 */
+.quantity-container {
+    display: flex;
+    gap: 15px; /* 余白を1.5倍に */
+    margin-bottom: 15px;
+}
+
+.quantity-wrapper {
+    flex: 0 0 32%; /* 固定幅を設定 */
+    display: flex;
+    flex-direction: column;
+}
+
+.quantity-wrapper label {
+    margin-bottom: 5px;
+}
+
+.quantity-select, #quantity-input {
+    width: 100%;
+    height: 45px; /* 高さを調整 */
+    font-size: 1em; /* フォントサイズを100%に */
+    margin-left: 0;
+    box-sizing: border-box;
+}
+
+.quantity-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none; /* 矢印を削除 */
+}
+
+#quantity-input {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: none; /* 矢印を削除 */
+}
+
+#quantity-input::placeholder {
+    color: #999;
+}
+
+/* 日付部分のスタイル調整 */
+.date-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.date-wrapper {
+    flex: 1 1 calc(33.33% - 10px); /* 3分の1の幅に調整 */
+    display: flex;
+    flex-direction: column;
+}
+
+.date-wrapper label {
+    margin-bottom: 5px;
+}
+
+#auto-date, #manual-date, #manual-time {
+    width: 100%;
+    height: 45px;
+    font-size: 1em; /* フォントサイズを調整 */
+    margin-left: 0;
+    box-sizing: border-box;
+    font-weight: normal; /* 太字を解除 */
+}
+
+@media (max-width: 600px) {
+    .date-wrapper {
+        flex: 1 1 100%; /* スマホ画面で全幅に広げる */
+    }
+}
+
+/* sent successfully Page Styles */
+.container {
+    background-color: #FFF8CD;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+}
+
+.container h1 {
+    color: #FF9642;
+    margin-bottom: 20px;
+}
+
+.container p {
+    color: #333333;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #A3D2CA;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.container a:hover {
+    background-color: #FF9642;
+}
