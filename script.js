@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Sending data:', data);  // デバッグログ
 
         // データ送信処理
-        fetch('https://script.google.com/macros/s/AKfycbyd7clTs8Nnj8PVdZslFeICFgLejPrIazjZ4Ismpdyy3zZycHbeAdDI399d7yHoBGeP/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbwGgTf9afVZUo6jFomf55zuK4oqvnLHWOMteWukmQ1IazdYhB2oPDW0F4LDt4wxJib-/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
