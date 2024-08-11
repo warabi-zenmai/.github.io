@@ -15,18 +15,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const manualDateInput = document.getElementById('manual-date');
     const manualTimeInput = document.getElementById('manual-time');
 
+    // カレンダーから日付が選択された後に自動取得日付をクリアする
     manualDateInput.addEventListener('change', function() {
         if (manualDateInput.value) {
-            autoDateInput.value = ''; 
-            manualTimeInput.disabled = false;
+            autoDateInput.value = ''; // 自動取得日付をクリア
+            manualTimeInput.disabled = false; // 手動入力時間を有効にする
         }
     });
 
+    // 手動入力日付が未入力の場合、手動入力時間を無効にする
     manualTimeInput.addEventListener('focus', function() {
         if (!manualDateInput.value) {
-            manualTimeInput.disabled = true;
+            manualTimeInput.disabled = true; // 手動入力日付が未入力の場合、手動入力時間を無効にする
         } else {
-            manualTimeInput.disabled = false;
+            manualTimeInput.disabled = false; // 手動入力日付が入力されている場合、手動入力時間を有効にする
         }
     });
 
@@ -52,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     quantityInput.addEventListener('input', function() {
+        // 全角数字を半角に変換
         const halfWidthValue = this.value.replace(/[０-９]/g, function(s) {
             return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
         });
@@ -61,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // カテゴリと出荷店舗の選択状態を保持する
     const categoryButtons = document.querySelectorAll('.btn-category');
     const storeButtons = document.querySelectorAll('.btn-store');
-    const sizeButtons = document.querySelectorAll('.btn-size');
+    const sizeButtons = document.querySelectorAll('.btn-size'); // サイズ選択ボタン
 
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -89,20 +92,10 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault(); // フォームのデフォルト送信を防ぐ
 
         // 選択された項目をlocalStorageに保存
-        const selectedCategoryElement = document.querySelector('.btn-category.selected');
-        const selectedStoreElement = document.querySelector('.btn-store.selected');
-        const selectedSizeElement = document.querySelector('.btn-size.selected');
-        const selectedPhotoElement = document.querySelector('.photo-slot.selected img');
-
-        if (!selectedCategoryElement || !selectedStoreElement || !selectedSizeElement || !selectedPhotoElement) {
-            alert('すべての項目を選択してください');
-            return;
-        }
-
-        const selectedCategory = selectedCategoryElement.textContent;
-        const selectedStore = selectedStoreElement.textContent;
-        const selectedSize = selectedSizeElement.textContent;
-        const selectedPhoto = selectedPhotoElement.alt;
+        const selectedCategory = document.querySelector('.btn-category.selected').textContent;
+        const selectedStore = document.querySelector('.btn-store.selected').textContent;
+        const selectedSize = document.querySelector('.btn-size.selected').textContent;
+        const selectedPhoto = document.querySelector('.photo-slot.selected').getAttribute('data-text');
 
         localStorage.setItem('selectedCategory', selectedCategory);
         localStorage.setItem('selectedStore', selectedStore);
@@ -114,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: document.querySelector('#auto-date').value || document.querySelector('#manual-date').value,
             category: selectedCategory,
             store: selectedStore,
-            photo: selectedPhoto,
+            photo: selectedPhoto,  // 修正部分：テキストを保存
             size: selectedSize,
             quantity: document.querySelector('#quantity-select').value || document.querySelector('#quantity-input').value,
             remarks: document.querySelector('#remarks').value
@@ -123,13 +116,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Sending data:', data);  // デバッグログ
 
         // データ送信処理
-        fetch('https://script.google.com/macros/s/AKfycbxr9H5QBcMpFIXjBg9fOu3DedjBhJPL7EjOFQ6zhI-cEfV6RLlGv3wXToAp7fDEO0ct/exec', {
+        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
             }
-            mode: 'cors'
         })
         .then(response => {
             if (!response.ok) {
@@ -143,8 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.clear(); // ローカルストレージをクリア
             document.getElementById('data-form').reset(); // フォームをリセット
             
-            // 成功時にサンクスページにリダイレクト
-            window.location.href = '/sent-successfully.html';
+            // ページ遷移を確実に行う
+            window.location.href = 'https://your-thank-you-page-url';
         })
         .catch(error => {
             console.error('Error:', error);  // デバッグログ
